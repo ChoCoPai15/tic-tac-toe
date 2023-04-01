@@ -20,9 +20,27 @@ const endGame = function () {
   main.classList.add("blur-in");
   crossWin.splice(0, crossWin.length);
   circleWin.splice(0, circleWin.length);
+  activePlayer.innerHTML = "ХІД ГРАВЦЯ 1";
 };
+let draw = [];
 let crossWin = [];
 let circleWin = [];
+let checkDraw = function (arr1, arr2) {
+  draw = [...arr1, ...arr2];
+  let way =
+    draw.includes("1") &&
+    draw.includes("2") &&
+    draw.includes("3") &&
+    draw.includes("4") &&
+    draw.includes("5") &&
+    draw.includes("6") &&
+    draw.includes("7") &&
+    draw.includes("8") &&
+    draw.includes("9");
+  if (way) {
+    return true;
+  }
+};
 let checkWinner = function (arr) {
   let way1 = arr.includes("1") && arr.includes("2") && arr.includes("3");
   let way2 = arr.includes("4") && arr.includes("5") && arr.includes("6");
@@ -56,6 +74,12 @@ const myEventListener = function (e) {
         winnerAlert.innerHTML = "ГРАВЕЦЬ 1 ВИГРАВ!";
         stopGame();
         endGame();
+      } else if (checkDraw(crossWin, circleWin)) {
+        console.log("Нічия!!!");
+        activePlayer.classList.add("hidden");
+        winnerAlert.innerHTML = "НІЧИЯ!";
+        stopGame();
+        endGame();
       }
     } else {
       activePlayer.innerHTML = "ХІД ГРАВЦЯ 1";
@@ -68,6 +92,12 @@ const myEventListener = function (e) {
         console.log("Гравець 2 виграв!!!");
         activePlayer.classList.add("hidden");
         winnerAlert.innerHTML = "ГРАВЕЦЬ 2 ВИГРАВ!";
+        stopGame();
+        endGame();
+      } else if (checkDraw(crossWin, circleWin)) {
+        console.log("Нічия!!!");
+        activePlayer.classList.add("hidden");
+        winnerAlert.innerHTML = "НІЧИЯ!";
         stopGame();
         endGame();
       }
