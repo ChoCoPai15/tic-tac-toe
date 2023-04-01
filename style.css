@@ -3,11 +3,30 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   overflow: hidden;
   background-color: #98dfaf;
   font-family: sans-serif;
 }
+
+@media (max-width: 768px) {
+  .button {
+    height: 5%;
+    width: 10%;
+  }
+
+  .page {
+    padding: 1vh;
+    display: grid;
+    grid-template-columns: repeat(3, 10%); /* Three columns with equal width */
+    grid-template-rows: repeat(3, 10%); /* Three rows with equal height */
+    gap: 3%;
+    justify-content: center;
+    align-content: center;
+  }
+}
+
 .blur {
   filter: blur(0.5rem);
   pointer-events: none;
@@ -63,7 +82,7 @@ body {
   display: flex;
   align-items: center;
   text-align: center;
-  color: #91d4a6;
+  color: #42ac63;
   font-size: 60px;
   font-weight: 600;
   position: absolute;
@@ -75,6 +94,7 @@ body {
   width: 500px;
   z-index: 3;
   border-radius: 30px;
+  justify-content: center;
 }
 .active_player {
   position: absolute;
@@ -140,4 +160,56 @@ body {
   left: 15px;
   border-radius: 50%;
   border: 5px white solid;
+}
+
+@media (max-width: 768px) {
+  .button {
+    height: 15%;
+    width: 50%;
+    font-size: 20px;
+  }
+
+  .page {
+    margin-right: 5px;
+    padding: 10px;
+    padding-top: 200px;
+    display: grid;
+    grid-template-columns: repeat(
+      3,
+      100px
+    ); /* Three columns with equal width */
+    grid-template-rows: repeat(3, 100px); /* Three rows with equal height */
+    gap: 5px;
+    justify-content: center;
+    align-content: center;
+  }
+  .box {
+    background-color: #5fb49c;
+    height: 100px;
+    width: 100px;
+    border: 1px #98dfaf solid;
+  }
+  .active_player {
+    margin-right: 20px;
+    text-align: center;
+    padding: 10px 20px;
+  }
+  .winner_alert {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #91d4a6;
+    font-size: 35px;
+    font-weight: 600;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -15%);
+    background-color: rgba(237, 237, 237, 0.847);
+    height: 100px;
+    width: 250px;
+    z-index: 3;
+    border-radius: 30px;
+    justify-content: center;
+  }
 }
